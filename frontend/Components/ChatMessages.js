@@ -1,3 +1,4 @@
+//Import all the necessary components, hooks, icon, library;
 import {
   FlatList,
   SafeAreaView,
@@ -14,31 +15,35 @@ import io from "socket.io-client";
 
 const socket = io('http://192.168.29.198:3000')
 
-socket.on('connect', ()=>{console.log('connected to the server', socket.id)})
+socket.on('connect', ()=>{console.log('connected to the server', socket.id)}) //Log the message, when the app connected to the server;
 
 export default function ChatMessages({userName}) {
 
-
+//Hooks for managing messages;
 const [message, setMessage] = useState('');
 const [groupMessages, setGroupMessages] = useState([]);
 
+//This runs when the app opens;
 useEffect(() => {
+  //Listen the messages from the server;
   socket.on('received-message', (data)=>{
-    console.log('message received', data)
+    console.log('Message Received', data)
+    //Add new messages to the list;
   setGroupMessages((prevMessages)=>[...prevMessages, data])
 
-  console.log('message rcv')
 });
 
+//Clean up when the app closes;
 return ()=>{
   socket.off('received-message');
   }}, []); 
 
-
+//This function sends the messages to the server;
 const sendMessage=()=>{
   const trimmed=(message || '').trim();
-  if(!trimmed) return;
+  if(!trimmed) return; //remove white spaces and don't send empty messages;
 
+  //Create a message object;
   const newMessage={
     id: `${Date.now()}-${Math.floor(Math.random()*1000000)}`,
     message: trimmed,
@@ -56,12 +61,13 @@ const sendMessage=()=>{
 
   };
 
+  //Send the message to the server;
 console.log('sending message', newMessage.id)
 socket.emit('send-message', newMessage);
-setMessage('');
+setMessage(''); //Clear the input field;
 
 };
-
+//How each message looks on the app;
   const renderMessages=({item})=>{
 if(!item || typeof item !== 'object')
   return null;
@@ -96,6 +102,7 @@ return(
               value={message}
               placeholder="Lets start a Chat!"
               onChangeText={setMessage}
+              autoCapitalize="words"
              
             ></TextInput>
 
@@ -113,10 +120,11 @@ return(
   );
 }
 
+//Styling part;
+
 const styles = StyleSheet.create({
   chatContainer: {
     justifyContent: 'center',
-    // alignContent: 'center',
     alignItems: 'center',
     paddingTop: StatusBar.currentHeight,
     backgroundColor: '#f3dcf3',
@@ -130,8 +138,7 @@ const styles = StyleSheet.create({
     fontWeight: '500', 
     fontSize: 15,
     fontStyle: 'italic',
-    // left: 3, 
-    // top: 3,
+ 
   },
    
   chatTextContainer:{
@@ -141,7 +148,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 0.2,
     marginBottom: 10,
-    // borderBottomLeftRadius:5,
     
   },
 
@@ -158,7 +164,6 @@ const styles = StyleSheet.create({
     borderRadius: 80,
     borderWidth: 1,
     backgroundColor: "#d8aafc",
-    // left: 10, 
     flexDirection: 'row',
     alignSelf: 'center', 
     bottom: 20,

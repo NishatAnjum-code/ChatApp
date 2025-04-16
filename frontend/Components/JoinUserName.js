@@ -1,16 +1,21 @@
+//Import necessary components and hook;
+
 import { Button, StyleSheet, TextInput, View, Text } from 'react-native'
 import React, { useState } from 'react'
 
-export default function JoinUserName({onJoin}) {
+export default function JoinUserName({onJoin}) { 
 
+  //Hook to store userName;
 const[userName, setUserName]=useState('');
 
 
+//This function is called when the user join the chat, by pressing the join button;
 const handleJoin=()=>{
   console.log('user before join', userName)
-  const newUserName=(userName || '').trim();
+  
+  const newUserName=(userName || '').trim(); //This remove white spaces;
   if(newUserName) {
-    onJoin(newUserName);
+    onJoin(newUserName); //If there is a userName then pass it to the parent;
   }
 };
 
@@ -32,6 +37,8 @@ const handleJoin=()=>{
 
   );
 }
+
+//Styling part;
 
 const styles = StyleSheet.create({
   container: {
