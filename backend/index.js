@@ -5,6 +5,7 @@ const app = express();
 const http = require('http');
 const {Server} = require('socket.io');
 const cors = require('cors');
+require("dotenv").config(); 
 
 
 // Middleware to allow json data and cors requests;
@@ -23,7 +24,7 @@ app.get('/', (request, response)=>{
 //Initialize socket.io server with cors settings;
 const io = new Server(server, {
     cors: {
-    origin: 'http://192.168.29.198:3000'},
+    origin: process.env.CORS_ORIGIN || 'http://10.0.2.2:3000'},
     methods: ['GET', 'POST'] 
 });
 
