@@ -14,6 +14,12 @@ app.use(cors());
 //create server using express;
 const server = http.createServer(app);
 
+//Serve a basic response for the root route
+app.get('/', (request, response)=>{
+    console.log('Request URL:', request.url);
+    console.log('Request Method:', request.method)
+    response.send  ('server is running')});
+    
 //Initialize socket.io server with cors settings;
 const io = new Server(server, {
     cors: {
@@ -41,6 +47,6 @@ io.on('connection', (socket)=>{
 });
 
 // Start the server on port 3000;
-server.listen(3000, ()=>{
-    console.log('Server is running');
+server.listen(3000, '0.0.0.0',()=>{
+    console.log('Server is running on port 3000');
 });

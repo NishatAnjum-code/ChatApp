@@ -1,0 +1,16 @@
+{
+  "cli": {
+    "version": ">= 7.8.5"
+  },
+  
+    "build": {
+      "production":{
+        "apk-release": {
+        "android": {
+          "buildType": "apk"
+        }
+      }
+      }
+        }
+  }
+  
