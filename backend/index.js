@@ -24,7 +24,7 @@ app.get('/', (request, response)=>{
 //Initialize socket.io server with cors settings;
 const io = new Server(server, {
     cors: {
-    origin: process.env.CORS_ORIGIN || 'http://10.0.2.2:3000'},
+    origin: process.env.CORS_ORIGIN || 'https://water-trite-persimmon.glitch.me'},
     methods: ['GET', 'POST'] 
 });
 

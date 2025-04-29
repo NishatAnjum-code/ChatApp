@@ -13,7 +13,7 @@ import React, { useEffect, useState } from "react";
 import Feather from "@expo/vector-icons/Feather";
 import io from "socket.io-client";
 
-const socket = io('http://10.0.2.2:3000')
+const socket = io('https://water-trite-persimmon.glitch.me', {transports: ["websockets"]});
 
 socket.on('connect', ()=>{console.log('connected to the server', socket.id)}) //Log the message, when the app connected to the server;
 
