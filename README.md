@@ -1,58 +1,30 @@
-# REAL-TIME BASIC CHAT APP
+## Chat App
 
-## A basic real-time chat app using React Native(Expo) for the frontend and Node.js with socket.IO for the backend.
+A real-time chat application built with **Socket.IO** and **React Native (Expo)**. This app allows users to send and receive messages in real time.
 
-## Setup Instructions
+# Features
 
-### 1. Backend Setup (Node.js + Socket.IO + Express)
+- Real-time messaging using **Socket.IO**.
+- User-friendly interface built with **React Native**.
+- Backend hosted on **Glitch** for public access
+- Easy setup and deployment.
 
-### Prerequisites
+# System Requirements
 
--Node.js installed
--Express installed (with `npm install`)
--Socket.IO installed (with `npm install`)
+- Node Version: 20+
+- NPM Version: 10+
 
-#### Install Dependencies
+# Setup Guide
 
-cd backend
-npm install
+# Frontend(Expo App)
 
-## Start the server
+Clone Repo: git clone https://github.com/NishatAnjum-code/ChatApp
+Navigate to project directory: cd frontend
+Install dependencies: npm i
+Run Application: npm start
 
-node index.js
+# Backend(Socket.IO server)
 
-The Sever will start on:
-http://localhost:3000
-
-Note: Use your local ip address when your are testing on a physical phone.
-
-# 2. Frontend Setup(React Native with Expo)
-
-### Prerequisites
-
--Node.js installed
--Expo CLI installed globally( with `npm install -g expo-cli`
-)
--socket.io-client installed (with `npm install`)
-
-Android/iOs simulator or Expo Go app on installed on your phone
-
-## Installed Dependencies
-
-cd frontend
-npm install
-
-### Start the app
-
-expo start
-
-This will open Expo Dev Tools in your Terminal.
-Scan the QR code using the Expo Go app on your phone.
-
-**Connect Socket to the Backend**
-In your frontend code, make sure your backend server is running and your phone is on the same WI-FI network if you're testing on a physical device.
-Update the socket server URL in your frontend code:
-const socket = io('http://192.168.xx.xx:3000')
-
-To find your local IP address:
-run ipconfig on Windows Powershell or Command Prompt
+Navigate to project directory: cd backend
+Install dependencies: npm i
+Run Application: node index.js
