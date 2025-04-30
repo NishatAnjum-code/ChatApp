@@ -1,12 +1,11 @@
 ## Chat App
 
-A real-time chat application built with **Socket.IO** and **React Native (Expo)**. This app allows users to send and receive messages in real time.
+A real-time chat application built with **Socket.IO** and **React Native (Expo)**. This app enables users to send and receive messages in real time using Socket.IO, supporting communication between emulators and physical devices on the same network.
 
 # Features
 
 - Real-time messaging using **Socket.IO**.
 - User-friendly interface built with **React Native**.
-- Backend hosted on **Glitch** for public access
 - Easy setup and deployment.
 
 # System Requirements
