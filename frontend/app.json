@@ -1,18 +1,12 @@
 {
   "expo": {
-    "name": "frontend",
+    "name": "ChatApp",
     "slug": "frontend",
-    "icon": "./assets/App_Icon.png",
+    "icon": "./assets/app-icon.png",
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
-    "android": {
-      "permissions":["INTERNET"],
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -21,7 +15,12 @@
     "ios": {
       "supportsTablet": true
     },
-   
+    "android": {
+      "permissions":["INTERNET"],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
       "package": "com.nishat_anjum_chatapp"
     },
     "web": {
