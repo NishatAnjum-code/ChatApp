@@ -39,7 +39,6 @@ const handleJoin=()=>{
 }
 
 //Styling part;
-
 const styles = StyleSheet.create({
   container: {
     flex:1,

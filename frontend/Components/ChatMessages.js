@@ -13,7 +13,8 @@ import React, { useEffect, useState } from "react";
 import Feather from "@expo/vector-icons/Feather";
 import io from "socket.io-client";
 
-const socket = io('https://water-trite-persimmon.glitch.me', {transports: ["websockets"]});
+const socket = io('http://10.0.2.2:3000'); // Enter your emulators's IP address, if testing on the emulators;
+                                           // Enter your machine's IP address, if testing on the physical devices;
 
 socket.on('connect', ()=>{console.log('connected to the server', socket.id)}) //Log the message, when the app connected to the server;
 
@@ -121,7 +122,6 @@ return(
 }
 
 //Styling part;
-
 const styles = StyleSheet.create({
   chatContainer: {
     justifyContent: 'center',

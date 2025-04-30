@@ -1,35 +1,27 @@
-// Import all the necessary modules, like below:-
-
 const express = require('express');
 const app = express();
 const http = require('http');
 const {Server} = require('socket.io');
 const cors = require('cors');
-require("dotenv").config(); 
 
 
 // Middleware to allow json data and cors requests;
 app.use(express.json());
 app.use(cors());
 
-//create server using express;
+//create HTTP server;
 const server = http.createServer(app);
 
-//Serve a basic response for the root route
-app.get('/', (request, response)=>{
-    console.log('Request URL:', request.url);
-    console.log('Request Method:', request.method)
-    response.send  ('server is running')});
-    
+
 //Initialize socket.io server with cors settings;
 const io = new Server(server, {
     cors: {
-    origin: process.env.CORS_ORIGIN || 'https://water-trite-persimmon.glitch.me'},
-    methods: ['GET', 'POST'] 
+    origin: 'http://10.0.2.2:3000'}, // Enter your emulators's IP address, if testing on the emulators;
+                                     // Enter your machine's IP address, if testing on the physical devices;
 });
 
 
-//Handle client socket connection along with relevant logs;
+//Handle client socket connection;
 io.on('connection', (socket)=>{
     console.log('User connected!', socket.id)
 
@@ -39,7 +31,6 @@ io.on('connection', (socket)=>{
         console.log('Message sent to client', data.id)
     })
     
-    //handle client disconnection;
     socket.on('disconnect', ()=>{
         console.log('User disconnected', socket.id);
     });
@@ -47,8 +38,7 @@ io.on('connection', (socket)=>{
 
 });
 
-// Start the server on port 3000;
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, '0.0.0.0',()=>{
-    console.log('Server is running on port 3000');
+// Start the server;
+server.listen(3000,()=>{
+    console.log('Server is running');
 });
